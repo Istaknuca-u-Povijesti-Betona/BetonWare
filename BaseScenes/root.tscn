@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bptgk1rnbubt4"]
+[gd_scene load_steps=3 format=3 uid="uid://bptgk1rnbubt4"]
 
-[ext_resource type="PackedScene" uid="uid://boanqqpjam5s8" path="res://BaseScenes/start.tscn" id="1_532aw"]
+[ext_resource type="PackedScene" uid="uid://boanqqpjam5s8" path="res://BaseScenes/StartScreen.tscn" id="1_gwgje"]
+[ext_resource type="Script" uid="uid://d2uekrpewkcbu" path="res://BaseScenes/root.gd" id="1_s7bcj"]
 
-[node name="Node" type="Node"]
+[node name="Root" type="Node"]
+script = ExtResource("1_s7bcj")
 
-[node name="StartScreen" parent="." instance=ExtResource("1_532aw")]
+[node name="StartScreen" parent="." instance=ExtResource("1_gwgje")]

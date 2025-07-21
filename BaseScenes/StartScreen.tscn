@@ -1,11 +1,16 @@
-[gd_scene format=3 uid="uid://boanqqpjam5s8"]
+[gd_scene load_steps=2 format=3 uid="uid://boanqqpjam5s8"]
+
+[ext_resource type="Script" uid="uid://cybro5aird3ny" path="res://BaseScenes/start_screen.gd" id="1_0imri"]
 
 [node name="StartScreen" type="Node"]
+script = ExtResource("1_0imri")
 
 [node name="BG" type="ColorRect" parent="."]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.838897, 0.838897, 0.838897, 1)
 
 [node name="Label" type="Label" parent="BG"]
@@ -35,3 +40,5 @@ offset_top = -72.32
 offset_right = 64.0
 offset_bottom = 55.68
 text = "ja pierdole"
+
+[connection signal="pressed" from="BG/Button" to="." method="_on_start_button_pressed"]

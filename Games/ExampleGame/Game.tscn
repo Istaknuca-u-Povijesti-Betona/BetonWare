@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1t7k3asovf2v"]
+
+[ext_resource type="Script" uid="uid://qhrau1p78c4b" path="res://Games/ExampleGame/game.gd" id="1_38c8b"]
+
+[node name="Game" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.839216, 0.839216, 0.839216, 1)
+script = ExtResource("1_38c8b")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 256.0
+offset_bottom = 256.0
+text = "click to win
+the game"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -256.0
+offset_top = 128.0
+offset_right = -128.0
+offset_bottom = 256.0
+text = "click to lose
+the game"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_win_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_loss_pressed"]

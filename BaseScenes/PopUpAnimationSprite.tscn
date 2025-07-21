@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bobeyb38auk3c"]
+
+[ext_resource type="Script" uid="uid://ci51sbrkmy8e4" path="res://BaseScenes/pop_up_animation_sprite.gd" id="1_am006"]
+
+[node name="PopUpAnimationSprite" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_am006")
+
+[node name="Texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 256.0
+offset_bottom = -256.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AntiClickUp" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -720.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2

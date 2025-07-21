@@ -1,0 +1,112 @@
+[gd_scene load_steps=4 format=3 uid="uid://doh2wwbp8nx5q"]
+
+[ext_resource type="Script" uid="uid://b13m6scfs31re" path="res://BaseScenes/transition_scene.gd" id="1_y8y7m"]
+[ext_resource type="FontFile" uid="uid://ccmei4uxsdya4" path="res://Resources/Fonts/SpecialGothicExpandedOne-Regular.ttf" id="2_wlalq"]
+[ext_resource type="Texture2D" uid="uid://blo7f0vs3itax" path="res://Resources/Textures/Heart.svg" id="3_wlalq"]
+
+[node name="Transition" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.839216, 0.839216, 0.839216, 1)
+script = ExtResource("1_y8y7m")
+
+[node name="LabelsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = -128.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameLabel" type="Label" parent="LabelsContainer"]
+custom_minimum_size = Vector2(0, 84)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wlalq")
+theme_override_font_sizes/font_size = 64
+text = "GAME NAME"
+autowrap_mode = 3
+
+[node name="Margin" type="BoxContainer" parent="LabelsContainer"]
+custom_minimum_size = Vector2(0, 81)
+layout_mode = 2
+
+[node name="DeveloperLabelsContainer" type="HBoxContainer" parent="LabelsContainer"]
+custom_minimum_size = Vector2(0, 84)
+layout_mode = 2
+
+[node name="By" type="Label" parent="LabelsContainer/DeveloperLabelsContainer"]
+custom_minimum_size = Vector2(0, 84)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wlalq")
+theme_override_font_sizes/font_size = 32
+text = "By: "
+
+[node name="DevLabel" type="Label" parent="LabelsContainer/DeveloperLabelsContainer"]
+custom_minimum_size = Vector2(0, 84)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_wlalq")
+theme_override_font_sizes/font_size = 32
+text = "Developer"
+
+[node name="HealthBarContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = -128.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="HealthBar" type="HBoxContainer" parent="HealthBarContainer"]
+custom_minimum_size = Vector2(0, 84)
+layout_mode = 2
+alignment = 2
+
+[node name="Health1" type="TextureRect" parent="HealthBarContainer/HealthBar"]
+layout_mode = 2
+texture = ExtResource("3_wlalq")
+expand_mode = 2
+
+[node name="Health2" type="TextureRect" parent="HealthBarContainer/HealthBar"]
+layout_mode = 2
+texture = ExtResource("3_wlalq")
+expand_mode = 2
+
+[node name="Health3" type="TextureRect" parent="HealthBarContainer/HealthBar"]
+layout_mode = 2
+texture = ExtResource("3_wlalq")
+expand_mode = 2
+
+[node name="AntiClickUp" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -720.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AntiClickDown" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 720.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
