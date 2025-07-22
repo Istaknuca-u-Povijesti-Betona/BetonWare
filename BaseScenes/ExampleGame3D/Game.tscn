@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0kg7t3x3xvqn"]
 
-[ext_resource type="Script" uid="uid://ecjcoxu73hsr" path="res://Games/ExampleGame3D/game.gd" id="1_2hnuf"]
+[ext_resource type="Script" uid="uid://ecjcoxu73hsr" path="res://BaseScenes/ExampleGame3D/game.gd" id="1_2hnuf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5071n"]
 
