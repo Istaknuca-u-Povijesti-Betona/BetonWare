@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0kg7t3x3xvqn"]
+
+[ext_resource type="Script" uid="uid://ecjcoxu73hsr" path="res://Games/ExampleGame3D/game.gd" id="1_2hnuf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5071n"]
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_2hnuf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_5071n")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.866025, 0, -0.5, 0.25, 0.866025, 0.433013, 0.433013, -0.5, 0.75, -2, 1, 2)
