@@ -1,9 +1,9 @@
 extends Node
 
-var RootNode
+var root_node
 
 func _ready():
-	RootNode = self.get_parent()
+	root_node = self.get_parent()
 
 func _on_start_button_pressed():
-	RootNode.start_game()
+	root_node.start_game()

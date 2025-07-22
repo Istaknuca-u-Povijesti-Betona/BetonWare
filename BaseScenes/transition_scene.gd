@@ -1,21 +1,21 @@
 extends ColorRect
 
-var GameLabel
-var DeveloperLabel
-var HealthBar
+var game_label
+var developer_label
+var health_bar
 
-var HealthSprite = preload("res://Resources/Textures/Heart.svg")
-var HealthBrokenSprite = preload("res://Resources/Textures/HeartDarker.svg")
+var health_sprite = preload("res://Resources/Textures/Heart.svg")
+var health_broken_sprite = preload("res://Resources/Textures/HeartDarker.svg")
 
 func _ready():
-	GameLabel = $LabelsContainer/GameLabel
-	DeveloperLabel = $LabelsContainer/DevLabel
-	HealthBar = $HealthBarContainer/HealthBar
+	game_label = $LabelsContainer/GameLabel
+	developer_label = $LabelsContainer/DevLabel
+	health_bar = $HealthBarContainer/HealthBar
 
-func set_labels(GameName, DeveloperName):
-	GameLabel.set_text(str(GameName))
-	DeveloperLabel.set_text("By: " + str(DeveloperName))
+func set_labels(game_name, developer_name):
+	game_label.set_text(str(game_name))
+	developer_label.set_text("By: " + str(developer_name))
 
 func clear_labels():
-	GameLabel.set_text("")
-	DeveloperLabel.set_text("")
+	game_label.set_text("")
+	developer_label.set_text("")

@@ -1,6 +1,6 @@
 extends Control
 
-var Sprite
+var sprite
 
 func _ready():
-	Sprite = $Texture
+	sprite = $Texture
