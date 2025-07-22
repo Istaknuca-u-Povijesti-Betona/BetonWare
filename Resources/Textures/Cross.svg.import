@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://br782apvhu5wn"
-path="res://.godot/imported/Cross.svg-c1aaf16911d36220181ae17c3161095f.ctex"
+path="res://.godot/imported/cross.svg-ada474d1fe4ed43691464cac2d2311f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Textures/Cross.svg"
-dest_files=["res://.godot/imported/Cross.svg-c1aaf16911d36220181ae17c3161095f.ctex"]
+source_file="res://resources/textures/cross.svg"
+dest_files=["res://.godot/imported/cross.svg-ada474d1fe4ed43691464cac2d2311f2.ctex"]
 
 [params]
 

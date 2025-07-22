@@ -4,8 +4,8 @@ var game_label
 var developer_label
 var health_bar
 
-var health_sprite = preload("res://Resources/Textures/Heart.svg")
-var health_broken_sprite = preload("res://Resources/Textures/HeartDarker.svg")
+var health_sprite = preload("res://resources/textures/heart.svg")
+var health_broken_sprite = preload("res://resources/textures/heart_darker.svg")
 
 func _ready():
 	game_label = $LabelsContainer/GameLabel

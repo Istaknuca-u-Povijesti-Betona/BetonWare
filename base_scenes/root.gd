@@ -4,10 +4,10 @@ var max_health : int = 3
 var health : int = max_health
 var window_size : Vector2
 var scenes_directory : String = "res://Games/"
-var main_menu_scene : PackedScene = preload("res://BaseScenes/StartScreen.tscn")
-var transition_scene : PackedScene = preload("res://BaseScenes/TransitionScene.tscn")
-var pop_up_scene : PackedScene = preload("res://BaseScenes/PopUpAnimationSprite.tscn")
-var game_over_scene : PackedScene = preload("res://BaseScenes/game_over.tscn")
+var main_menu_scene : PackedScene = preload("res://base_scenes/start_screen.tscn")
+var transition_scene : PackedScene = preload("res://base_scenes/transition_scene.tscn")
+var pop_up_scene : PackedScene = preload("res://base_scenes/pop_up_animation_sprite.tscn")
+var game_over_scene : PackedScene = preload("res://base_scenes/game_over.tscn")
 
 var animation_speed : float = 0.5
 var wiggle_speed : float = 0.10
@@ -35,9 +35,9 @@ func play_animation(type):
 	var pop_up_scene_node : Node = self.get_child(-1)
 	match type:
 		"Win":
-			pop_up_scene_node.Sprite.set_texture(load("res://Resources/Textures/Checkmark.svg"))
+			pop_up_scene_node.sprite.set_texture(load("res://resources/textures/checkmark.svg"))
 		"Loss":
-			pop_up_scene_node.Sprite.set_texture(load("res://Resources/Textures/Cross.svg"))
+			pop_up_scene_node.sprite.set_texture(load("res://resources/textures/cross.svg"))
 	
 	transition_animation(pop_up_scene_node, "In")
 	await get_tree().create_timer(outcome_hold_duration).timeout
@@ -56,11 +56,10 @@ func switch_to_scene(scene_to_switch_to, type):
 	self.add_child(transition_scene.instantiate())
 	var transition : Node = self.get_child(-1)
 	
-	if health >= 0:
-		transition.set_labels(scene_to_switch_to.game_description, scene_to_switch_to.game_author)
-		for i in max_health - health:
-			transition.health_bar.get_child(i).set_texture(transition.health_broken_sprite)
-	else:
+	transition.set_labels(scene_to_switch_to.game_description, scene_to_switch_to.game_author)
+	for i in max_health - health:
+		transition.health_bar.get_child(i).set_texture(transition.health_broken_sprite)
+	if health == 0:
 		transition.clear_labels()
 	
 	if type == "Loss":
@@ -72,7 +71,7 @@ func switch_to_scene(scene_to_switch_to, type):
 	if type == "Loss":
 		for i in max_health - health:
 			var current_heart : Node = transition.health_bar.get_child(i)
-			current_heart.set_texture(transition.health_broken_Sprite)
+			current_heart.set_texture(transition.health_broken_sprite)
 			var heart_position : Vector2 = transition.health_bar.get_child(i).position
 			animation_wiggle(current_heart, Vector2(heart_position.x - 10, 0))
 			await get_tree().create_timer(0.10).timeout

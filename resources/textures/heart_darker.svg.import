@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://yht0ciq24ox"
-path="res://.godot/imported/HeartDarker.svg-f63cf1e06c2e5ca6755f0e9772a40cd4.ctex"
+path="res://.godot/imported/heart_darker.svg-7c9c8f0e6f413b284f2832570e33f3ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Textures/HeartDarker.svg"
-dest_files=["res://.godot/imported/HeartDarker.svg-f63cf1e06c2e5ca6755f0e9772a40cd4.ctex"]
+source_file="res://resources/textures/heart_darker.svg"
+dest_files=["res://.godot/imported/heart_darker.svg-7c9c8f0e6f413b284f2832570e33f3ce.ctex"]
 
 [params]
 

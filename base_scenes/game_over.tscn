@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://byw57y78ko8ik"]
 
-[ext_resource type="FontFile" uid="uid://ccmei4uxsdya4" path="res://Resources/Fonts/SpecialGothicExpandedOne-Regular.ttf" id="1_fmmlj"]
+[ext_resource type="FontFile" uid="uid://ccmei4uxsdya4" path="res://resources/fonts/SpecialGothicExpandedOne-Regular.ttf" id="1_fnuep"]
 
 [node name="GameOver" type="ColorRect"]
 anchors_preset = 15
@@ -17,7 +17,7 @@ offset_top = 136.0
 offset_right = 1152.0
 offset_bottom = 584.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_fmmlj")
+theme_override_fonts/font = ExtResource("1_fnuep")
 theme_override_font_sizes/font_size = 64
 text = "GAME OVER"
 
