@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bobeyb38auk3c"]
 
 [ext_resource type="Script" uid="uid://ci51sbrkmy8e4" path="res://base_scenes/pop_up_animation_sprite.gd" id="1_n1y1p"]
-[ext_resource type="AudioStream" uid="uid://b563d7ynwjdbp" path="res://resources/audio/PotjeraBuzzer.mp3" id="2_gj8q6"]
+[ext_resource type="AudioStream" uid="uid://d3dlgiebneukl" path="res://resources/audio/potjera_buzzer.mp3" id="2_n1y1p"]
 
 [node name="PopUpAnimationSprite" type="Control"]
 layout_mode = 3
@@ -45,4 +45,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="FailSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_gj8q6")
+stream = ExtResource("2_n1y1p")
