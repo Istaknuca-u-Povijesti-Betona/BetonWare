@@ -24,24 +24,24 @@ func transition_animation(target, direction):
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_QUAD)
 	match direction:
-		"In":
+		"in":
 			target.position.y = window_size.y
 			tween.tween_property(target, "position", Vector2.ZERO, animation_speed)
-		"Out":
+		"out":
 			tween.tween_property(target, "position", Vector2(0, 0 - window_size.y), animation_speed)
 
 func play_animation(type):
 	self.add_child(pop_up_scene.instantiate())
 	var pop_up_scene_node : Node = self.get_child(-1)
 	match type:
-		"Win":
+		"win":
 			pop_up_scene_node.sprite.set_texture(load("res://resources/textures/checkmark.svg"))
-		"Loss":
+		"loss":
 			pop_up_scene_node.sprite.set_texture(load("res://resources/textures/cross.svg"))
 	
-	transition_animation(pop_up_scene_node, "In")
+	transition_animation(pop_up_scene_node, "in")
 	await get_tree().create_timer(outcome_hold_duration).timeout
-	transition_animation(pop_up_scene_node, "Out")
+	transition_animation(pop_up_scene_node, "out")
 	await get_tree().create_timer(animation_speed).timeout
 	
 	pop_up_scene_node.queue_free()
@@ -62,13 +62,13 @@ func switch_to_scene(scene_to_switch_to, type):
 	if health == 0:
 		transition.clear_labels()
 	
-	if type == "Loss":
+	if type == "loss":
 		transition.health_bar.get_child(max_health - health - 1).set_texture(transition.health_sprite)
 	
-	transition_animation(transition, "In")
+	transition_animation(transition, "in")
 	await get_tree().create_timer(transition_hold_duration).timeout
 	
-	if type == "Loss":
+	if type == "loss":
 		for i in max_health - health:
 			var current_heart : Node = transition.health_bar.get_child(i)
 			current_heart.set_texture(transition.health_broken_sprite)
@@ -87,7 +87,7 @@ func switch_to_scene(scene_to_switch_to, type):
 	self.add_child(scene_to_switch_to)
 	move_child(scene_to_switch_to, 0)
 	
-	transition_animation(transition, "Out")
+	transition_animation(transition, "out")
 	await get_tree().create_timer(animation_speed).timeout
 	transition.queue_free()
 
@@ -96,35 +96,35 @@ func restart():
 	var game_over_scene_instance : Node = self.get_child(-1)
 	game_over_scene_instance.position.y = get_viewport().get_visible_rect().size.y
 	
-	transition_animation(game_over_scene_instance, "In")
+	transition_animation(game_over_scene_instance, "in")
 	await get_tree().create_timer(transition_loss_hold_duration).timeout
 	
 	self.get_child(0).queue_free()
 	self.add_child(main_menu_scene.instantiate())
 	move_child(self.get_child(-1), 0)
 	
-	transition_animation(game_over_scene_instance, "Out")
+	transition_animation(game_over_scene_instance, "out")
 	await get_tree().create_timer(animation_speed).timeout
 	game_over_scene_instance.queue_free()
 
 func game_end(status):
 	match status:
-		"Win":
-			play_animation("Win")
+		"win":
+			play_animation("win")
 			await get_tree().create_timer(outcome_hold_duration).timeout
-			load_random_game("Win")
-		"Loss":
+			load_random_game("win")
+		"loss":
 			health -= 1
-			play_animation("Loss")
+			play_animation("loss")
 			await get_tree().create_timer(outcome_hold_duration).timeout
-			load_random_game("Loss")
+			load_random_game("loss")
 
 func start_game():
 	health = max_health
-	load_random_game("Win")
+	load_random_game("win")
 
 func load_random_game(type):
 	var random_directory : String = Array(ResourceLoader.list_directory(scenes_directory)).pick_random()
-	var random_game = load(scenes_directory + random_directory + "Game.tscn")
+	var random_game = load(scenes_directory + random_directory + "game.tscn")
 	var loaded_instance = random_game.instantiate()
 	switch_to_scene(loaded_instance, type)

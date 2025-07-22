@@ -11,7 +11,7 @@ func _ready():
 # EVERYTHING ABOVE IS REQUIRED FOR SHIT TO WORK
 
 func _on_button_win_pressed():
-	root_node.game_end("Win")	# End the game with this function, pass either "Win" or "Loss" as the parameter
+	root_node.game_end("win")	# End the game with this function, pass either "Win" or "Loss" as the parameter
 
 func _on_button_loss_pressed():
-	root_node.game_end("Loss")
+	root_node.game_end("loss")
