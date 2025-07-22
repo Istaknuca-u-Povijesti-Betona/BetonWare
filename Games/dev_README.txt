@@ -6,6 +6,8 @@ do not change node structure outside your minigame (eg do not try to .get_parent
 
 PS remember to follow the Godot / GDScript naming conventions
 
+the exception to this is that we will be using British English to piss off the Americans
+
 snake_case     -  file names, functions, variables, signals
 PascalCase     -  class names, node names, enum names
 CONSTANT_CASE  -  constants, enum members
