@@ -33,5 +33,17 @@ offset_bottom = 256.0
 text = "click to lose
 the game"
 
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 128.0
+offset_right = 64.0
+offset_bottom = 256.0
+text = "click to stop
+the timer"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_win_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_loss_pressed"]

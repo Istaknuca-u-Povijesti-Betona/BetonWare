@@ -1,94 +1,123 @@
 extends Node
 
-var MaxHealth = 3
-var Health = MaxHealth
-var ScenesDirectory = "res://Games/"
-var TransitionScene = preload("res://BaseScenes/TransitionScene.tscn")
-var PopUpScene = preload("res://BaseScenes/PopUpAnimationSprite.tscn")
+var MaxHealth : int = 3
+var Health : int = MaxHealth
+var WindowSize : Vector2
+var ScenesDirectory : String = "res://Games/"
+var MainMenuScene : PackedScene = preload("res://BaseScenes/StartScreen.tscn")
+var TransitionScene : PackedScene = preload("res://BaseScenes/TransitionScene.tscn")
+var PopUpScene : PackedScene = preload("res://BaseScenes/PopUpAnimationSprite.tscn")
+var GameOverScene : PackedScene = preload("res://BaseScenes/game_over.tscn")
+
+var AnimationSpeed : float = 0.5
+var WiggleSpeed : float = 0.10
+var OutcomeHoldDuration : float = 0.75
+var TransitionHoldDuration : float = 0.75
+var TransitionLossHoldDuration : float = 1.0
 
 func _ready():
 	pass
 
+func transition_animation(Target, Direction):
+	WindowSize = get_viewport().get_visible_rect().size
+	var tween : Tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
+	match Direction:
+		"In":
+			Target.position.y = WindowSize.y
+			tween.tween_property(Target, "position", Vector2.ZERO, AnimationSpeed)
+		"Out":
+			tween.tween_property(Target, "position", Vector2(0, 0 - WindowSize.y), AnimationSpeed)
+
 func play_animation(Type):
 	self.add_child(PopUpScene.instantiate())
-	var PopUpSceneNode = self.get_child(-1)
-	var WindowSize = PopUpSceneNode.get_size()
-	PopUpSceneNode.position.y = WindowSize.y
+	var PopUpSceneNode : Node = self.get_child(-1)
 	match Type:
 		"Win":
 			PopUpSceneNode.Sprite.set_texture(load("res://Resources/Textures/Checkmark.svg"))
 		"Loss":
 			PopUpSceneNode.Sprite.set_texture(load("res://Resources/Textures/Cross.svg"))
-	var PopUpTweenIn = get_tree().create_tween()
-	PopUpTweenIn.set_trans(Tween.TRANS_QUAD)
-	PopUpTweenIn.set_ease(Tween.EASE_OUT)
-	PopUpTweenIn.tween_property(PopUpSceneNode, "position", Vector2.ZERO, 0.5)
 	
-	await get_tree().create_timer(0.75).timeout
-	
-	var PopUpTweenOut = get_tree().create_tween()
-	PopUpTweenOut.set_trans(Tween.TRANS_QUAD)
-	PopUpTweenOut.set_ease(Tween.EASE_IN)
-	PopUpTweenOut.tween_property(PopUpSceneNode, "position", Vector2(0, 0 - WindowSize.y), 0.5)
-	
-	await get_tree().create_timer(0.5).timeout
+	transition_animation(PopUpSceneNode, "In")
+	await get_tree().create_timer(OutcomeHoldDuration).timeout
+	transition_animation(PopUpSceneNode, "Out")
+	await get_tree().create_timer(AnimationSpeed).timeout
 	
 	PopUpSceneNode.queue_free()
 
+func animation_wiggle(Target, Direction):
+	var tween : Tween = get_tree().create_tween()
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(Target, "position", Direction, WiggleSpeed)
+
 func switch_to_scene(SceneToSwitchTo, Type):
 	self.add_child(TransitionScene.instantiate())
-	var Transition = self.get_child(-1)
-	var WindowSize = Transition.get_size()
-	Transition.position.y = WindowSize.y
+	var Transition : Node = self.get_child(-1)
 	
-	Transition.GameLabel.text = SceneToSwitchTo.GameDescription
-	Transition.DeveloperLabel.text = SceneToSwitchTo.GameAuthor
-	for i in 3 - Health:
-		Transition.HealthBar.get_child(i).set_texture(Transition.HealthBrokenSprite)
-	
-	var TransitionTweenIn = get_tree().create_tween()
-	TransitionTweenIn.set_trans(Tween.TRANS_QUAD)
-	TransitionTweenIn.set_ease(Tween.EASE_OUT)
-	TransitionTweenIn.tween_property(Transition, "position", Vector2.ZERO, 0.5)
-	
-	await get_tree().create_timer(0.75).timeout
-	
-	if Type == "Loss":
-		Health -= 1
+	if Health >= 0:
+		Transition.set_labels(SceneToSwitchTo.GameDescription, SceneToSwitchTo.GameAuthor)
 		for i in MaxHealth - Health:
 			Transition.HealthBar.get_child(i).set_texture(Transition.HealthBrokenSprite)
-			#var DamageTween = get_tree().create_tween()	#TODO: Fix this animation and make it work
-			#DamageTween.set_trans(Tween.TRANS_QUAD)
-			#DamageTween.set_ease(Tween.EASE_OUT)
-			#DamageTween.tween_property(Transition.HealthBar.get_child(i), "position", Vector2(10, 0), 0.25)
-			#await get_tree().create_timer(0.25).timeout
-			#DamageTween.tween_property(Transition.HealthBar.get_child(i), "position", Vector2(-10, 0), 0.25)
-			#await get_tree().create_timer(0.25).timeout
-			#DamageTween.tween_property(Transition.HealthBar.get_child(i), "position", Vector2(-10, 0), 0.25)
+	else:
+		Transition.clear_labels()
+	
+	if Type == "Loss":
+		Transition.HealthBar.get_child(MaxHealth - Health - 1).set_texture(Transition.HealthSprite)
+	
+	transition_animation(Transition, "In")
+	await get_tree().create_timer(TransitionHoldDuration).timeout
+	
+	if Type == "Loss":
+		for i in MaxHealth - Health:
+			var CurrentHeart : Node = Transition.HealthBar.get_child(i)
+			CurrentHeart.set_texture(Transition.HealthBrokenSprite)
+			var HeartPosition : Vector2 = Transition.HealthBar.get_child(i).position
+			animation_wiggle(CurrentHeart, Vector2(HeartPosition.x - 10, 0))
+			await get_tree().create_timer(0.10).timeout
+			animation_wiggle(CurrentHeart, Vector2(HeartPosition.x + 10, 0))
+			await get_tree().create_timer(0.10).timeout
+			animation_wiggle(CurrentHeart, Vector2(HeartPosition.x, 0))
 		await get_tree().create_timer(0.50).timeout
-		if Health <= 0:
-			pass	#TODO: end game
+		
+		if Health == 0:
+			restart()
 	
 	self.get_child(0).queue_free()
 	self.add_child(SceneToSwitchTo)
 	move_child(SceneToSwitchTo, 0)
 	
-	var TransitionTweenOut = get_tree().create_tween()
-	TransitionTweenOut.set_trans(Tween.TRANS_QUAD)
-	TransitionTweenOut.set_ease(Tween.EASE_IN)
-	TransitionTweenOut.tween_property(Transition, "position", Vector2(0, 0 - WindowSize.y), 0.5)
-	await get_tree().create_timer(0.5).timeout
+	transition_animation(Transition, "Out")
+	await get_tree().create_timer(AnimationSpeed).timeout
 	Transition.queue_free()
+
+func restart():
+	self.add_child(GameOverScene.instantiate())
+	var GameOverSceneInstance : Node = self.get_child(-1)
+	GameOverSceneInstance.position.y = get_viewport().get_visible_rect().size.y
+	
+	transition_animation(GameOverSceneInstance, "In")
+	await get_tree().create_timer(TransitionLossHoldDuration).timeout
+	
+	self.get_child(0).queue_free()
+	self.add_child(MainMenuScene.instantiate())
+	move_child(self.get_child(-1), 0)
+	
+	transition_animation(GameOverSceneInstance, "Out")
+	await get_tree().create_timer(AnimationSpeed).timeout
+	GameOverSceneInstance.queue_free()
 
 func game_end(Status):
 	match Status:
 		"Win":
 			play_animation("Win")
-			await get_tree().create_timer(1.00).timeout
+			await get_tree().create_timer(OutcomeHoldDuration).timeout
 			load_random_game("Win")
 		"Loss":
+			Health -= 1
 			play_animation("Loss")
-			await get_tree().create_timer(1.00).timeout
+			await get_tree().create_timer(OutcomeHoldDuration).timeout
 			load_random_game("Loss")
 
 func start_game():
@@ -96,7 +125,7 @@ func start_game():
 	load_random_game("Win")
 
 func load_random_game(Type):
-	var RandomDirectory = Array(ResourceLoader.list_directory(ScenesDirectory)).pick_random()
-	var RandomGame = load(ScenesDirectory + RandomDirectory + "Game.tscn")
-	var LoadedInstance = RandomGame.instantiate()
+	var RandomDirectory : String = Array(ResourceLoader.list_directory(ScenesDirectory)).pick_random()
+	var RandomGame : PackedScene = load(ScenesDirectory + RandomDirectory + "Game.tscn")
+	var LoadedInstance : Node = RandomGame.instantiate()
 	switch_to_scene(LoadedInstance, Type)

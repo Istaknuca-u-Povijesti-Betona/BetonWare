@@ -31,32 +31,20 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_wlalq")
 theme_override_font_sizes/font_size = 64
-text = "GAME NAME"
+text = "PLACEHOLDER GAME"
 autowrap_mode = 3
 
 [node name="Margin" type="BoxContainer" parent="LabelsContainer"]
 custom_minimum_size = Vector2(0, 81)
 layout_mode = 2
 
-[node name="DeveloperLabelsContainer" type="HBoxContainer" parent="LabelsContainer"]
-custom_minimum_size = Vector2(0, 84)
-layout_mode = 2
-
-[node name="By" type="Label" parent="LabelsContainer/DeveloperLabelsContainer"]
+[node name="DevLabel" type="Label" parent="LabelsContainer"]
 custom_minimum_size = Vector2(0, 84)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_wlalq")
 theme_override_font_sizes/font_size = 32
-text = "By: "
-
-[node name="DevLabel" type="Label" parent="LabelsContainer/DeveloperLabelsContainer"]
-custom_minimum_size = Vector2(0, 84)
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_wlalq")
-theme_override_font_sizes/font_size = 32
-text = "Developer"
+text = "By: Placeholder Developer"
 
 [node name="HealthBarContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
