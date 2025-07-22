@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0kg7t3x3xvqn"]
 
-[ext_resource type="Script" uid="uid://ecjcoxu73hsr" path="res://games_disabled/ExampleGame3D/game.gd" id="1_2hnuf"]
+[ext_resource type="Script" uid="uid://ecjcoxu73hsr" path="res://games_disabled/example_game_3d/game.gd" id="1_3ix1l"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5071n"]
 
 [node name="Game" type="Node3D"]
-script = ExtResource("1_2hnuf")
+script = ExtResource("1_3ix1l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_5071n")

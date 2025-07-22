@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://boanqqpjam5s8"]
 
-[ext_resource type="Script" uid="uid://cybro5aird3ny" path="res://BaseScenes/start_screen.gd" id="1_0imri"]
+[ext_resource type="Script" uid="uid://cybro5aird3ny" path="res://base_scenes/start_screen.gd" id="1_0e78v"]
 
 [node name="StartScreen" type="Node"]
-script = ExtResource("1_0imri")
+script = ExtResource("1_0e78v")
 
 [node name="BG" type="ColorRect" parent="."]
 anchors_preset = 15

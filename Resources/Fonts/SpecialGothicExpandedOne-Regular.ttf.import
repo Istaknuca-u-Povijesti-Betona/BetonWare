@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://ccmei4uxsdya4"
-path="res://.godot/imported/SpecialGothicExpandedOne-Regular.ttf-ca72602f2cea882aa39e2a4ae7010583.fontdata"
+path="res://.godot/imported/SpecialGothicExpandedOne-Regular.ttf-fdcd4fa5f503856d5be9cad34a0ec177.fontdata"
 
 [deps]
 
-source_file="res://Resources/Fonts/SpecialGothicExpandedOne-Regular.ttf"
-dest_files=["res://.godot/imported/SpecialGothicExpandedOne-Regular.ttf-ca72602f2cea882aa39e2a4ae7010583.fontdata"]
+source_file="res://resources/fonts/SpecialGothicExpandedOne-Regular.ttf"
+dest_files=["res://.godot/imported/SpecialGothicExpandedOne-Regular.ttf-fdcd4fa5f503856d5be9cad34a0ec177.fontdata"]
 
 [params]
 

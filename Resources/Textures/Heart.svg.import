@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blo7f0vs3itax"
-path="res://.godot/imported/Heart.svg-2571d0071c58ebe5e5d4b25c06622b62.ctex"
+path="res://.godot/imported/heart.svg-1d6d1e130aa0a176fd359abae0a22e55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Textures/Heart.svg"
-dest_files=["res://.godot/imported/Heart.svg-2571d0071c58ebe5e5d4b25c06622b62.ctex"]
+source_file="res://resources/textures/heart.svg"
+dest_files=["res://.godot/imported/heart.svg-1d6d1e130aa0a176fd359abae0a22e55.ctex"]
 
 [params]
 

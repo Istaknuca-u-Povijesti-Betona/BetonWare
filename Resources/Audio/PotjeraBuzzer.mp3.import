@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://b563d7ynwjdbp"
-path="res://.godot/imported/PotjeraBuzzer.mp3-50382f09e9c1d6e6424331d07f1825c9.mp3str"
+path="res://.godot/imported/PotjeraBuzzer.mp3-27fff85f3ef9ccaa7dcbd8a4e5cc661d.mp3str"
 
 [deps]
 
-source_file="res://Resources/Audio/PotjeraBuzzer.mp3"
-dest_files=["res://.godot/imported/PotjeraBuzzer.mp3-50382f09e9c1d6e6424331d07f1825c9.mp3str"]
+source_file="res://resources/audio/PotjeraBuzzer.mp3"
+dest_files=["res://.godot/imported/PotjeraBuzzer.mp3-27fff85f3ef9ccaa7dcbd8a4e5cc661d.mp3str"]
 
 [params]
 
