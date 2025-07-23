@@ -1,6 +1,7 @@
 class_name MinigameBase
 extends Node
 
+var game_node : Node
 var root_node : Node
 @export var game_description : String = "GAME TITLE!"
 @export var game_author : String = "Developer"
