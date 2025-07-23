@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d1t7k3asovf2v"]
 
-[ext_resource type="Script" uid="uid://qhrau1p78c4b" path="res://games/example_game_2d/game.gd" id="1_vidow"]
+[ext_resource type="Script" uid="uid://bye24nxeowwpp" path="res://games/example_game_2d/example_game_2d.gd" id="1_vidow"]
 
 [node name="Game" type="ColorRect"]
 anchors_preset = 15

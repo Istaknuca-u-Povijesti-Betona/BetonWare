@@ -3,7 +3,7 @@ extends Node
 var max_health : int = 3
 var health : int = max_health
 var window_size : Vector2
-var scenes_directory : String = "res://Games/"
+var scenes_directory : String = "res://games/"
 var main_menu_scene : PackedScene = preload("res://base_scenes/start_screen.tscn")
 var transition_scene : PackedScene = preload("res://base_scenes/transition_scene.tscn")
 var pop_up_scene : PackedScene = preload("res://base_scenes/pop_up_animation_sprite.tscn")
