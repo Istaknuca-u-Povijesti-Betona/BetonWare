@@ -107,7 +107,7 @@ func restart():
 	await get_tree().create_timer(animation_speed).timeout
 	game_over_scene_instance.queue_free()
 
-func game_end(status):
+func end_game(status):
 	match status:
 		"win":
 			play_animation("win")
@@ -118,6 +118,8 @@ func game_end(status):
 			play_animation("loss")
 			await get_tree().create_timer(outcome_hold_duration).timeout
 			load_random_game("loss")
+	await get_tree().create_timer(animation_speed).timeout
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func start_game():
 	health = max_health
