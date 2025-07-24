@@ -12,9 +12,9 @@ size = Vector3(9, 4, 4)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_3ix1l")
-game_description = null
-game_author = null
-game_time_seconds = null
+game_description = "3D EXAMPLE!"
+game_author = "Zedorfska"
+game_time_seconds = 10
 
 [node name="SpawnArea" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -5)

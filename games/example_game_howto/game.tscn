@@ -6,6 +6,8 @@
 
 [node name="Game" type="Node"]
 script = ExtResource("1_vidow")
+game_description = "FUNCTION EXAMPLE!"
+game_author = "Zedorfska"
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -172,7 +174,7 @@ autowrap_mode = 2
 
 [node name="Tick" type="Label" parent="."]
 visible = false
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -160.0
@@ -190,7 +192,7 @@ autowrap_mode = 2
 
 [node name="Tock" type="Label" parent="."]
 visible = false
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 8.0
