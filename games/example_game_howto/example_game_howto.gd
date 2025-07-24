@@ -21,10 +21,10 @@ func _on_loss_button_pressed():
 func _on_pause_timer_button_pressed():
 	if minigame.timer_is_paused() == false:	# Check if the timer is currently paused
 		minigame.pause_timer(true)			# Pause the timer
-		$Background/PauseTimerButton.text = "click to pause the timer"
+		$Background/PauseTimerButton.text = "click to unpause the timer"
 	else:
 		minigame.pause_timer(false)
-		$Background/PauseTimerButton.text = "click to unpause the timer"
+		$Background/PauseTimerButton.text = "click to pause the timer"
 
 func _on_add_time_button_pressed():
 	minigame.add_time(5)					# Add time to the timer (int), this can also be a negative value
