@@ -7,7 +7,7 @@ extends MinigameBase
 # PLEASE USE ANCHORS WHEN MAKING 2D GAMES / UI!
 
 func _ready():
-	# You will need to call this function if you are utilising _ready()
+	# You will need to call super._ready() if you are utilising _ready()
 	super._ready()
 	
 	print("Eeyikes! How am I supposed to \"Play\" this \"Game\" without any variables!?")
