@@ -10,39 +10,23 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_n1y1p")
 
 [node name="Texture" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 256.0
-offset_bottom = -256.0
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.378
+anchor_right = 0.85
+anchor_bottom = 0.622
+offset_top = -0.160004
+offset_bottom = 0.159973
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
-
-[node name="AntiClickUp" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -720.0
-offset_bottom = -720.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="AntiClickDown" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 720.0
-offset_bottom = 720.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="FailSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_gj8q6")

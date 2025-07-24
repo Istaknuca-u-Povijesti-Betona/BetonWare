@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://boanqqpjam5s8"]
+[gd_scene load_steps=3 format=3 uid="uid://boanqqpjam5s8"]
 
 [ext_resource type="Script" uid="uid://cybro5aird3ny" path="res://base_scenes/start_screen.gd" id="1_0e78v"]
+[ext_resource type="FontFile" uid="uid://ccmei4uxsdya4" path="res://resources/fonts/SpecialGothicExpandedOne-Regular.ttf" id="2_37t73"]
 
 [node name="StartScreen" type="Node"]
 script = ExtResource("1_0e78v")
@@ -25,8 +26,9 @@ offset_bottom = 168.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_37t73")
 theme_override_font_sizes/font_size = 64
-text = "beton"
+text = "BetonWare™"
 
 [node name="Button" type="Button" parent="BG"]
 layout_mode = 1
@@ -39,6 +41,6 @@ offset_left = -64.0
 offset_top = -72.32
 offset_right = 64.0
 offset_bottom = 55.68
-text = "ja pierdole"
+text = "START"
 
 [connection signal="pressed" from="BG/Button" to="." method="_on_start_button_pressed"]

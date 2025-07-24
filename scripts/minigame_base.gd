@@ -8,3 +8,6 @@ var minigame : Node
 
 func _ready():
 	minigame = self.get_parent()
+
+func _on_timer_ticked():
+	pass

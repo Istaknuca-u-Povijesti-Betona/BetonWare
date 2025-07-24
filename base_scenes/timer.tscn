@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://bgytvaew05ahv" path="res://base_scenes/timer.gd" id="1_1nsts"]
 [ext_resource type="FontFile" uid="uid://ccmei4uxsdya4" path="res://resources/fonts/SpecialGothicExpandedOne-Regular.ttf" id="1_6gwrf"]
 
-[node name="Timer" type="Timer"]
+[node name="GameTimerNode" type="Node"]
 script = ExtResource("1_1nsts")
+
+[node name="Timer" type="Timer" parent="."]
 
 [node name="TimerLabel" type="Label" parent="."]
 anchors_preset = -1
@@ -21,4 +23,4 @@ theme_override_font_sizes/font_size = 64
 text = "15"
 horizontal_alignment = 1
 
-[connection signal="timeout" from="." to="." method="_on_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_tick"]
