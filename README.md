@@ -9,9 +9,12 @@ End your game with `minigame.end_game([TYPE])`, for other functions you can use 
 Feel free to look into or duplicate the example_game_2d / example_game_3d folders and continue from there.
 
 
+
 PS remember to follow naming conventions.
+
 eg. if you are naming a variable in GDScript use snake_case, if you are using C# name it with camelCase.
 
 read full standardisation at:
+
 https://docs.godotengine.org/en/4.4/tutorials/scripting/gdscript/gdscript_styleguide.html
 https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions
