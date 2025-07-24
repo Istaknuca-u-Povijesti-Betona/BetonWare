@@ -5,6 +5,7 @@ var health : int = max_health
 var window_size : Vector2
 var scenes_directory : String = "res://games/"
 var main_menu_scene : PackedScene = preload("res://base_scenes/start_screen.tscn")
+var timer_scene : PackedScene = preload("res://base_scenes/timer.tscn")
 var transition_scene : PackedScene = preload("res://base_scenes/transition_scene.tscn")
 var pop_up_scene : PackedScene = preload("res://base_scenes/pop_up_animation_sprite.tscn")
 var game_over_scene : PackedScene = preload("res://base_scenes/game_over.tscn")
@@ -14,9 +15,6 @@ var wiggle_speed : float = 0.10
 var outcome_hold_duration : float = 0.75
 var transition_hold_duration : float = 0.75
 var transition_loss_hold_duration : float = 1.0
-
-func _ready():
-	pass
 
 func transition_animation(target, direction):
 	window_size = get_viewport().get_visible_rect().size
@@ -52,7 +50,7 @@ func animation_wiggle(target, direction):
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(target, "position", direction, wiggle_speed)
 
-func switch_to_scene(scene_to_switch_to, type):
+func load_game(scene_to_switch_to, type):
 	self.add_child(transition_scene.instantiate())
 	var transition : Node = self.get_child(-1)
 	
@@ -84,8 +82,16 @@ func switch_to_scene(scene_to_switch_to, type):
 			restart()
 	
 	self.get_child(0).queue_free()
+	if self.get_child(1).get_name() == "Timer":
+		self.get_child(1).queue_free()
 	self.add_child(scene_to_switch_to)
 	move_child(scene_to_switch_to, 0)
+	
+	var timer : Node = timer_scene.instantiate()
+	self.add_child(timer)
+	timer.timer_time_left = scene_to_switch_to.game_time_seconds
+	timer.start()
+	move_child(timer, 1)
 	
 	transition_animation(transition, "out")
 	await get_tree().create_timer(animation_speed).timeout
@@ -118,6 +124,8 @@ func end_game(status):
 			play_animation("loss")
 			await get_tree().create_timer(outcome_hold_duration).timeout
 			load_random_game("loss")
+	if status != "win" and status != "loss":
+		push_error("Invalid parameter recieved")
 	await get_tree().create_timer(animation_speed).timeout
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
@@ -127,6 +135,6 @@ func start_game():
 
 func load_random_game(type):
 	var random_directory : String = Array(ResourceLoader.list_directory(scenes_directory)).pick_random()
-	var random_game = load(scenes_directory + random_directory + "game.tscn")
-	var loaded_instance = random_game.instantiate()
-	switch_to_scene(loaded_instance, type)
+	var random_game : PackedScene = load(scenes_directory + random_directory + "game.tscn")
+	var loaded_game : Node = random_game.instantiate()
+	load_game(loaded_game, type)

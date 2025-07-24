@@ -4,6 +4,9 @@
 
 [node name="Game" type="Node"]
 script = ExtResource("1_vidow")
+game_description = null
+game_author = null
+game_time_seconds = null
 
 [node name="Node" type="ColorRect" parent="."]
 anchors_preset = 15
