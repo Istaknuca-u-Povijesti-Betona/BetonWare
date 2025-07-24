@@ -1,0 +1,229 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1t7k3asovf2v"]
+
+[ext_resource type="Script" uid="uid://bye24nxeowwpp" path="res://games/example_game_howto/example_game_howto.gd" id="1_vidow"]
+[ext_resource type="FontFile" uid="uid://ccmei4uxsdya4" path="res://resources/fonts/SpecialGothicExpandedOne-Regular.ttf" id="2_n31br"]
+[ext_resource type="Texture2D" uid="uid://dauo3j3a78s4h" path="res://games/example_game_howto/documentation.png" id="3_v2tjl"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_vidow")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.839216, 0.839216, 0.839216, 1)
+
+[node name="GameStates" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 40.0
+offset_right = 432.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_n31br")
+theme_override_font_sizes/font_size = 32
+text = "GAME STATES"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="WinButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 96.0
+offset_top = 152.0
+offset_right = 224.0
+offset_bottom = 280.0
+text = "click to win the game"
+autowrap_mode = 2
+
+[node name="LossButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 288.0
+offset_top = 152.0
+offset_right = 416.0
+offset_bottom = 280.0
+text = "click to lose the game"
+autowrap_mode = 2
+
+[node name="TimerManipulation" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = -320.0
+offset_right = 432.0
+offset_bottom = -224.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_n31br")
+theme_override_font_sizes/font_size = 32
+text = "TIMER MANIPULATION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PauseTimerButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = -208.0
+offset_right = 224.0
+offset_bottom = -80.0
+text = "click to pause the timer"
+autowrap_mode = 2
+
+[node name="AddTimeButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 288.0
+offset_top = -208.0
+offset_right = 416.0
+offset_bottom = -80.0
+text = "click to add five seconds to the timer"
+autowrap_mode = 2
+
+[node name="Visual" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -432.0
+offset_top = -320.0
+offset_right = -80.0
+offset_bottom = -224.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_n31br")
+theme_override_font_sizes/font_size = 32
+text = "VISUAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="RandomizeTimerColor" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = -208.0
+offset_right = -96.0
+offset_bottom = -80.0
+text = "click to randomise timer colour"
+autowrap_mode = 2
+
+[node name="HideTimerButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -416.0
+offset_top = -208.0
+offset_right = -288.0
+offset_bottom = -80.0
+text = "click to hide the timer"
+autowrap_mode = 2
+
+[node name="Special" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -336.0
+offset_top = 40.0
+offset_right = -176.0
+offset_bottom = 136.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_n31br")
+theme_override_font_sizes/font_size = 32
+text = "SPECIAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="SpecialButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_top = 152.0
+offset_right = -192.0
+offset_bottom = 280.0
+text = "only clickable when timer is above 20 seconds"
+autowrap_mode = 2
+
+[node name="Tick" type="Label" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 48.0
+offset_right = 13.0
+offset_bottom = 127.0
+rotation = 0.243825
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_n31br")
+theme_override_font_sizes/font_size = 32
+text = "TICK..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Tock" type="Label" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 8.0
+offset_top = 96.0
+offset_right = 181.0
+offset_bottom = 175.0
+rotation = -0.343599
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_n31br")
+theme_override_font_sizes/font_size = 32
+text = "TOCK..."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Elitism" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 448.0
+offset_top = 240.0
+offset_right = -445.0
+offset_bottom = -192.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_v2tjl")
+expand_mode = 1
+
+[connection signal="pressed" from="Background/WinButton" to="." method="_on_win_button_pressed"]
+[connection signal="pressed" from="Background/LossButton" to="." method="_on_loss_button_pressed"]
+[connection signal="pressed" from="Background/PauseTimerButton" to="." method="_on_pause_timer_button_pressed"]
+[connection signal="pressed" from="Background/AddTimeButton" to="." method="_on_add_time_button_pressed"]
+[connection signal="pressed" from="Background/RandomizeTimerColor" to="." method="_on_randomize_timer_color_button_pressed"]
+[connection signal="pressed" from="Background/HideTimerButton" to="." method="_on_hide_timer_button_pressed"]
+[connection signal="pressed" from="Background/SpecialButton" to="." method="_on_special_button_pressed"]

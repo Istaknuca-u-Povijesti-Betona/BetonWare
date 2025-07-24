@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0kg7t3x3xvqn"]
+
+[ext_resource type="Script" uid="uid://ecjcoxu73hsr" path="res://scripts/example_game_3d/example_game_3d.gd" id="1_3ix1l"]
+[ext_resource type="Script" uid="uid://kcev4kbd3odv" path="res://scripts/example_game_3d/player.gd" id="2_ihl12"]
+[ext_resource type="Texture2D" uid="uid://3o2kfsicnbjd" path="res://scripts/example_game_3d/crosshair.svg" id="3_0cuhi"]
+[ext_resource type="FontFile" uid="uid://ccmei4uxsdya4" path="res://resources/fonts/SpecialGothicExpandedOne-Regular.ttf" id="4_5lqfu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5071n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ihl12"]
+size = Vector3(9, 4, 4)
+
+[node name="Game" type="Node"]
+script = ExtResource("1_3ix1l")
+game_description = null
+game_author = null
+game_time_seconds = null
+
+[node name="SpawnArea" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -5)
+
+[node name="SpawnArea" type="Marker3D" parent="SpawnArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4, 4)
+
+[node name="DaFloo\'" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("BoxMesh_5071n")
+
+[node name="Player" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4)
+fov = 90.0
+script = ExtResource("2_ihl12")
+
+[node name="CrosshairContainer" type="CenterContainer" parent="Player"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="Player/CrosshairContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("3_0cuhi")
+expand_mode = 1
+
+[node name="ScoreContainer" type="BoxContainer" parent="Player"]
+offset_right = 192.0
+offset_bottom = 128.0
+alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="Player/ScoreContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_5lqfu")
+theme_override_font_sizes/font_size = 32
+text = "0/10"
+
+[node name="RayCast" type="RayCast3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -15, 0)
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="EnemySpawn" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.5, -5)
+
+[node name="EnemySpawnArea" type="CollisionShape3D" parent="EnemySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2, 2)
+shape = SubResource("BoxShape3D_ihl12")
+
+[node name="Light" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 8, -2)
+light_energy = 2.0
+spot_range = 11.0
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_ball_spawn_timer_timeout"]

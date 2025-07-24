@@ -1,7 +1,7 @@
 extends Node3D
 
-var main : Node
+var game : Node
 
 func hit():
-	main.add_score()
+	game.add_score()
 	self.queue_free()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3o2kfsicnbjd"
-path="res://.godot/imported/crosshair.svg-4e0f2119d713cb1674e698210160f881.ctex"
+uid="uid://dauo3j3a78s4h"
+path="res://.godot/imported/documentation.png-0f6a182d6d30aad5e558e72c9a29532e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://games/example_game_3d/crosshair.svg"
-dest_files=["res://.godot/imported/crosshair.svg-4e0f2119d713cb1674e698210160f881.ctex"]
+source_file="res://games/example_game_howto/documentation.png"
+dest_files=["res://.godot/imported/documentation.png-0f6a182d6d30aad5e558e72c9a29532e.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

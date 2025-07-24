@@ -2,21 +2,21 @@ extends Node
 
 var max_health : int = 3
 var health : int = max_health
+var transitioning : bool = false
 var window_size : Vector2
 var scenes_directory : String = "res://games/"
 var main_menu_scene : PackedScene = preload("res://base_scenes/start_screen.tscn")
+var timer_scene : PackedScene = preload("res://base_scenes/timer.tscn")
 var transition_scene : PackedScene = preload("res://base_scenes/transition_scene.tscn")
 var pop_up_scene : PackedScene = preload("res://base_scenes/pop_up_animation_sprite.tscn")
 var game_over_scene : PackedScene = preload("res://base_scenes/game_over.tscn")
+var timer_node : Node
 
 var animation_speed : float = 0.5
 var wiggle_speed : float = 0.10
 var outcome_hold_duration : float = 0.75
 var transition_hold_duration : float = 0.75
 var transition_loss_hold_duration : float = 1.0
-
-func _ready():
-	pass
 
 func transition_animation(target, direction):
 	window_size = get_viewport().get_visible_rect().size
@@ -52,7 +52,7 @@ func animation_wiggle(target, direction):
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(target, "position", direction, wiggle_speed)
 
-func switch_to_scene(scene_to_switch_to, type):
+func load_game(scene_to_switch_to, type):
 	self.add_child(transition_scene.instantiate())
 	var transition : Node = self.get_child(-1)
 	
@@ -84,8 +84,17 @@ func switch_to_scene(scene_to_switch_to, type):
 			restart()
 	
 	self.get_child(0).queue_free()
+	transitioning = false
+	if self.get_child_count() > 2:
+		self.get_child(1).queue_free()
 	self.add_child(scene_to_switch_to)
 	move_child(scene_to_switch_to, 0)
+	
+	timer_node = timer_scene.instantiate()
+	self.add_child(timer_node)
+	timer_node.time_left = scene_to_switch_to.game_time_seconds
+	timer_node.timer.start()
+	move_child(timer_node, 1)
 	
 	transition_animation(transition, "out")
 	await get_tree().create_timer(animation_speed).timeout
@@ -100,6 +109,8 @@ func restart():
 	await get_tree().create_timer(transition_loss_hold_duration).timeout
 	
 	self.get_child(0).queue_free()
+	if self.get_child_count() > 2:
+		self.get_child(1).queue_free()
 	self.add_child(main_menu_scene.instantiate())
 	move_child(self.get_child(-1), 0)
 	
@@ -108,6 +119,11 @@ func restart():
 	game_over_scene_instance.queue_free()
 
 func end_game(status):
+	if transitioning == true:
+		print("Attempted to end game while game ending.")
+		return
+	transitioning = true
+	timer_node.timer.set_paused(true)
 	match status:
 		"win":
 			play_animation("win")
@@ -118,15 +134,52 @@ func end_game(status):
 			play_animation("loss")
 			await get_tree().create_timer(outcome_hold_duration).timeout
 			load_random_game("loss")
+	if status != "win" and status != "loss":
+		push_error("Invalid parameter recieved")
 	await get_tree().create_timer(animation_speed).timeout
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func start_game():
+	if transitioning == true:
+		print("Attempted to end game while game ending.")
+		return
+	transitioning = true
 	health = max_health
 	load_random_game("win")
 
 func load_random_game(type):
 	var random_directory : String = Array(ResourceLoader.list_directory(scenes_directory)).pick_random()
-	var random_game = load(scenes_directory + random_directory + "game.tscn")
-	var loaded_instance = random_game.instantiate()
-	switch_to_scene(loaded_instance, type)
+	var random_game : PackedScene = load(scenes_directory + random_directory + "game.tscn")
+	var loaded_game : Node = random_game.instantiate()
+	load_game(loaded_game, type)
+
+
+# TIMER CONTROL
+
+
+func set_timer_color(color):		# WHAT THE FUCK IS A YARD DUDE
+	timer_node.timer_label.set("theme_override_colors/font_color", color)
+
+func add_time(extra_time):
+	timer_node.time_left += extra_time
+	if timer_node.time_left < 1:
+		timer_node.time_left = 0
+	timer_node.timer_label.set_text(str(timer_node.time_left))
+
+func get_time():
+	return timer_node.time_left
+
+func pause_timer(boolean):
+	timer_node.timer.set_paused(boolean)
+
+func timer_is_paused():
+	return timer_node.timer.is_paused()
+
+func hide_timer(boolean):
+	if boolean == true:
+		timer_node.timer_label.visible = false
+	else:
+		timer_node.timer_label.visible = true
+
+func timer_is_hidden():
+	return timer_node.timer_label.visible
