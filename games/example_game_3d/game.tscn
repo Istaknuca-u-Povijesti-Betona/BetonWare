@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0kg7t3x3xvqn"]
 
-[ext_resource type="Script" uid="uid://ecjcoxu73hsr" path="res://scripts/example_game_3d/example_game_3d.gd" id="1_3ix1l"]
-[ext_resource type="Script" uid="uid://kcev4kbd3odv" path="res://scripts/example_game_3d/player.gd" id="2_ihl12"]
-[ext_resource type="Texture2D" uid="uid://3o2kfsicnbjd" path="res://scripts/example_game_3d/crosshair.svg" id="3_0cuhi"]
+[ext_resource type="Script" uid="uid://ecjcoxu73hsr" path="res://games/example_game_3d/example_game_3d.gd" id="1_3ix1l"]
+[ext_resource type="Script" uid="uid://kcev4kbd3odv" path="res://games/example_game_3d/player.gd" id="2_ihl12"]
+[ext_resource type="Texture2D" uid="uid://3o2kfsicnbjd" path="res://games/example_game_3d/crosshair.svg" id="3_0cuhi"]
 [ext_resource type="FontFile" uid="uid://ccmei4uxsdya4" path="res://resources/fonts/SpecialGothicExpandedOne-Regular.ttf" id="4_5lqfu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5071n"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bm17lkx6qha21"]
 
-[ext_resource type="Script" uid="uid://cfbjuuvdnu8cu" path="res://scripts/example_game_3d/orb.gd" id="1_fdqtk"]
+[ext_resource type="Script" uid="uid://cfbjuuvdnu8cu" path="res://games/example_game_3d/orb.gd" id="1_fdqtk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_enoal"]
 
