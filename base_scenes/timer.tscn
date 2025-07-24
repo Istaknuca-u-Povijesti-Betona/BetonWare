@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cr0xuhx0kjnvk"]
 
-[ext_resource type="Script" uid="uid://bgytvaew05ahv" path="res://base_scenes/timer.gd" id="1_1nsts"]
+[ext_resource type="Script" path="res://base_scenes/timer.gd" id="1_1nsts"]
 [ext_resource type="FontFile" uid="uid://ccmei4uxsdya4" path="res://resources/fonts/SpecialGothicExpandedOne-Regular.ttf" id="1_6gwrf"]
 
 [node name="GameTimerNode" type="Node"]
@@ -9,7 +9,7 @@ script = ExtResource("1_1nsts")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="TimerLabel" type="Label" parent="."]
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -256.0
@@ -17,7 +17,7 @@ offset_top = 8.0
 offset_right = 256.0
 offset_bottom = 136.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.160784, 0.160784, 0.160784, 1)
 theme_override_fonts/font = ExtResource("1_6gwrf")
 theme_override_font_sizes/font_size = 64
 text = "15"

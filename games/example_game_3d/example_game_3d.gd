@@ -11,6 +11,7 @@ var the_orb = preload("res://games/example_game_3d/orb.tscn")
 
 func _ready():
 	super._ready()
+	minigame.set_timer_color(Color(1.0, 1.0, 1.0, 1.0))
 	score_label = $Player/ScoreContainer/ScoreLabel
 	enemy_spawn_area_corner_1 = $SpawnArea
 	enemy_spawn_area_corner_2 = $SpawnArea/SpawnArea

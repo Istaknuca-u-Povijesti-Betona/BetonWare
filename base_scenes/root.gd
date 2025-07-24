@@ -83,15 +83,16 @@ func load_game(scene_to_switch_to, type):
 		if health == 0:
 			restart()
 	
+	RenderingServer.set_default_clear_color(Color(0.30196078431372547, 0.30196078431372547, 0.30196078431372547))
 	self.get_child(0).queue_free()
-	transitioning = false
 	if self.get_child_count() > 2:
 		self.get_child(1).queue_free()
+	transitioning = false
+	
+	self.add_child(timer_node)
 	self.add_child(scene_to_switch_to)
 	move_child(scene_to_switch_to, 0)
 	
-	timer_node = timer_scene.instantiate()
-	self.add_child(timer_node)
 	timer_node.time_left = scene_to_switch_to.game_time_seconds
 	timer_node.timer.start()
 	move_child(timer_node, 1)
@@ -150,6 +151,7 @@ func start_game():
 func load_random_game(type):
 	var random_directory : String = Array(ResourceLoader.list_directory(scenes_directory)).pick_random()
 	var random_game : PackedScene = load(scenes_directory + random_directory + "game.tscn")
+	timer_node = timer_scene.instantiate()
 	var loaded_game : Node = random_game.instantiate()
 	load_game(loaded_game, type)
 
